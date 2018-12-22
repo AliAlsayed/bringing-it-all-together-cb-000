@@ -47,12 +47,9 @@ class Dog
     row = DB[:conn].execute("select * from dogs where name = ? and breed = ?;", name, breed)
     if !row.empty?
       data = row[0]
-      dog = self.new#new_from_db(data)
-      dog.name = data[1]
-      dog.breed = data[2]
-      dog.id = data[0]
+      dog = self.new_from_db(data)
     else
-      dog = self.create(name, breed)
+      dog = self.create(name: name, breed: breed)
     end
     dog
   end
