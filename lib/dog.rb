@@ -1,10 +1,8 @@
 class Dog
   attr_accessor :name, :breed, :id
   #attr_reader :id
-  def initialize(name: nil, breed: nil, id: nil)
-    @name = name
-    @breed = breed
-    @id = id
+  def initialize(h)
+    h.each {|k,v| public_send("#{k}=",v)}
   end
 
   def self.create_table
